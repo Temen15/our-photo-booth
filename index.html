@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,
+                   maximum-scale=1.0, user-scalable=no">
+
+    <title>Our Little Photo Booth ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="background">
+        <span>♥</span>
+        <span>♡</span>
+        <span>♥</span>
+        <span>♡</span>
+        <span>♥</span>
+    </div>
+
+    <!-- HOME -->
+    <section id="homeScreen" class="screen active">
+
+        <div class="logo">♡</div>
+
+        <h1>Our Little<br>Photo Booth</h1>
+
+        <p>
+            Miles apart,<br>
+            but still making memories together.
+        </p>
+
+        <button id="createRoomBtn" class="mainBtn">
+            💕 Create Our Room
+        </button>
+
+        <button id="joinRoomBtn" class="secondaryBtn">
+            Join Her Room
+        </button>
+
+    </section>
+
+
+    <!-- ROOM -->
+    <section id="roomScreen" class="screen">
+
+        <div class="topBar">
+            <button id="backBtn">←</button>
+
+            <div>
+                <h2>Our Booth</h2>
+                <small id="roomStatus">Connecting...</small>
+            </div>
+
+            <button id="shareRoomBtn">↗</button>
+        </div>
+
+
+        <div class="cameraArea">
+
+            <div class="videoCard">
+
+                <video id="localVideo"
+                       autoplay
+                       muted
+                       playsinline></video>
+
+                <div class="nameTag">
+                    YOU ❤️
+                </div>
+
+            </div>
+
+
+            <div class="videoCard">
+
+                <video id="remoteVideo"
+                       autoplay
+                       playsinline></video>
+
+                <div class="nameTag">
+                    BABYY ❤️
+                </div>
+
+                <div id="waitingMessage">
+                    Waiting for her... 💕
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div id="countdown"></div>
+
+
+        <button id="captureBtn" class="captureBtn">
+            📸
+        </button>
+
+        <p class="hint">
+            Both cameras will be captured together
+        </p>
+
+    </section>
+
+
+    <!-- RESULT -->
+    <section id="resultScreen" class="screen">
+
+        <div class="resultHeader">
+
+            <button id="resultBackBtn">←</button>
+
+            <h2>Our Memory ❤️</h2>
+
+        </div>
+
+
+        <div class="photoContainer">
+
+            <img id="finalPhoto"
+                 alt="Our photo">
+
+        </div>
+
+
+        <p class="memoryText">
+            Even miles apart,<br>
+            we're still together. ❤️
+        </p>
+
+
+        <div class="actions">
+
+            <button id="retakeBtn"
+                    class="secondaryBtn">
+                🔄 Retake
+            </button>
+
+            <button id="saveBtn"
+                    class="mainBtn">
+                💾 Save Photo
+            </button>
+
+            <button id="shareBtn"
+                    class="secondaryBtn">
+                🔗 Share Photo
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Hidden canvas -->
+    <canvas id="photoCanvas"></canvas>
+
+
+    <!-- PeerJS -->
+    <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

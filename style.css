@@ -1,0 +1,419 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont,
+                 "SF Pro Display", sans-serif;
+
+    background:
+        radial-gradient(circle at top,
+        #4b164c 0%,
+        #1c0b22 45%,
+        #08050c 100%);
+
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* BACKGROUND HEARTS */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.background span {
+    position: absolute;
+    font-size: 25px;
+    opacity: .15;
+    animation: float 8s linear infinite;
+}
+
+.background span:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.background span:nth-child(2) {
+    left: 30%;
+    animation-delay: 2s;
+}
+
+.background span:nth-child(3) {
+    left: 55%;
+    animation-delay: 4s;
+}
+
+.background span:nth-child(4) {
+    left: 75%;
+    animation-delay: 1s;
+}
+
+.background span:nth-child(5) {
+    left: 90%;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+
+    from {
+        transform: translateY(110vh) rotate(0deg);
+    }
+
+    to {
+        transform: translateY(-20vh) rotate(360deg);
+    }
+}
+
+
+/* SCREEN */
+
+.screen {
+    position: relative;
+    z-index: 1;
+
+    min-height: 100vh;
+    width: 100%;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 30px 20px;
+}
+
+.screen.active {
+    display: flex;
+}
+
+
+/* HOME */
+
+#homeScreen {
+    justify-content: center;
+    text-align: center;
+}
+
+.logo {
+    width: 85px;
+    height: 85px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 45px;
+
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 0 40px rgba(255,70,190,.25);
+
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: 42px;
+    line-height: 1.05;
+    letter-spacing: -1px;
+}
+
+#homeScreen p {
+    margin-top: 18px;
+    margin-bottom: 35px;
+
+    color: #d7c8d9;
+    line-height: 1.6;
+}
+
+
+/* BUTTONS */
+
+button {
+    border: none;
+    cursor: pointer;
+    color: white;
+    font: inherit;
+}
+
+.mainBtn {
+    width: min(100%, 340px);
+
+    padding: 17px 25px;
+
+    border-radius: 18px;
+
+    background: linear-gradient(
+        135deg,
+        #ff4fa3,
+        #a44cff
+    );
+
+    font-weight: 700;
+
+    box-shadow:
+        0 10px 30px rgba(255,60,170,.25);
+
+    transition: .2s;
+}
+
+.mainBtn:active {
+    transform: scale(.96);
+}
+
+.secondaryBtn {
+    width: min(100%, 340px);
+
+    padding: 16px 25px;
+
+    margin-top: 12px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.08);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    backdrop-filter: blur(15px);
+}
+
+
+/* TOP BAR */
+
+.topBar {
+    width: 100%;
+    max-width: 600px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.topBar button,
+.resultHeader button {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.08);
+
+    font-size: 20px;
+}
+
+.topBar h2 {
+    font-size: 20px;
+}
+
+.topBar small {
+    color: #bcaabd;
+}
+
+
+/* CAMERA */
+
+.cameraArea {
+    width: 100%;
+    max-width: 600px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+}
+
+.videoCard {
+    position: relative;
+
+    aspect-ratio: 3 / 4;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    background: #120b15;
+
+    border: 1px solid rgba(255,255,255,.12);
+}
+
+.videoCard video {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.nameTag {
+    position: absolute;
+
+    bottom: 12px;
+    left: 12px;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    background: rgba(0,0,0,.45);
+
+    backdrop-filter: blur(10px);
+
+    font-size: 12px;
+}
+
+#waitingMessage {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 20px;
+
+    background: rgba(0,0,0,.45);
+
+    font-size: 14px;
+}
+
+
+/* COUNTDOWN */
+
+#countdown {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none;
+
+    font-size: 120px;
+    font-weight: 800;
+
+    text-shadow:
+        0 0 40px #ff4fa3;
+
+    z-index: 20;
+}
+
+
+/* CAPTURE */
+
+.captureBtn {
+    width: 80px;
+    height: 80px;
+
+    margin-top: 35px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: #111;
+
+    font-size: 32px;
+
+    border: 7px solid rgba(255,255,255,.25);
+
+    background-clip: padding-box;
+
+    box-shadow:
+        0 0 0 4px rgba(255,255,255,.7),
+        0 0 35px rgba(255,80,180,.4);
+}
+
+.hint {
+    margin-top: 15px;
+
+    color: #aa9cab;
+
+    font-size: 12px;
+}
+
+
+/* RESULT */
+
+.resultHeader {
+    width: 100%;
+    max-width: 600px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.photoContainer {
+    width: 100%;
+    max-width: 600px;
+
+    padding: 10px;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,.08);
+
+    border: 1px solid rgba(255,255,255,.1);
+}
+
+#finalPhoto {
+    width: 100%;
+
+    display: block;
+
+    border-radius: 17px;
+}
+
+.memoryText {
+    text-align: center;
+
+    margin: 20px 0;
+
+    color: #d7c8d9;
+
+    line-height: 1.5;
+}
+
+.actions {
+    width: 100%;
+    max-width: 600px;
+}
+
+
+/* DESKTOP */
+
+@media (min-width: 700px) {
+
+    .screen {
+        padding-top: 50px;
+    }
+
+    .cameraArea {
+        gap: 15px;
+    }
+
+    .videoCard {
+        aspect-ratio: 4 / 5;
+    }
+}
